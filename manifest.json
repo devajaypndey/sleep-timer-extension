@@ -5,7 +5,7 @@
   "description": "Auto pause or mute videos after a timer",
 
   "action": {
-    "default_popup": "popup/index.html"
+    "default_popup": "dist/popup/index.html"
   },
 
   "background": {

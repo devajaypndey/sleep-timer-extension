@@ -30,8 +30,8 @@ const theme = createTheme({
       main: "#A7E399"
     },
     background: {
-      default: "#0f1115",
-      paper: "#161a20"
+      default: "#25343F",
+      paper: "#25343F"
     }
   },
   shape: {
@@ -161,7 +161,7 @@ export default function App() {
                 onChange={(e) =>
                   setMinutes(Math.max(1, Number(e.target.value)))
                 }
-                sx={{ mt: 1.5 }}
+                sx={{ mt: 2.5 }}
               />
             </>
           )}

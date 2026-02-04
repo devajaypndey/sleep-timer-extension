@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sleep Timer",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Auto pause or mute videos after a timer",
 
   "action": {
@@ -12,6 +12,11 @@
     "service_worker": "background/serviceWorker.js"
   },
 
-  "permissions": ["activeTab", "scripting", "alarms"],
-  "host_permissions": ["<all_urls>"]
+  "permissions": ["activeTab", "scripting", "alarms", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "public/logo.png",
+    "48": "public/logo.png",
+    "128": "public/logo.png"
+  }
 }

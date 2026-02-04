@@ -61,6 +61,23 @@ export default function App() {
     setRunning(true);
   };
 
+  useEffect(() =>{
+    chrome.storage.local.get(["running", "endTime"], (data) =>{
+      if(data.running && data.endTime){
+        const remaining = Math.floor(
+          (data.endTime - Date.now()) / 1000
+        );
+
+        if(remaining > 0){
+          setSecondsLeft(remaining);
+          setRunning(true);
+        }else{
+          setRunning(false)
+        }
+      }
+    });
+  }, []);
+
   /* ---------- STOP TIMER ---------- */
   const stop = () => {
     chrome.runtime.sendMessage({ type: "STOP_TIMER" });
@@ -73,11 +90,12 @@ export default function App() {
     if (!running || secondsLeft <= 0) return;
 
     const interval = setInterval(() => {
-      setSecondsLeft((s) => s - 1);
+      setSecondsLeft((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(interval);
   }, [running, secondsLeft]);
+
 
   const formatTime = (secs) => {
     const m = Math.floor(secs / 60);

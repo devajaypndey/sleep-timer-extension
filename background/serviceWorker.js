@@ -9,7 +9,6 @@ chrome.runtime.onMessage.addListener((msg) => {
     chrome.storage.local.set({
       running: true,
       endTime,
-      mute: msg.mute
     });
 
     chrome.alarms.create("sleepTimer", {
@@ -28,20 +27,12 @@ chrome.runtime.onMessage.addListener((msg) => {
 });
 
 chrome.alarms.onAlarm.addListener(() => {
-  chrome.storage.local.get("mute", ({mute}) =>{
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
-      if(!tabs[0]) return;
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs[0]) return;
 
-
-      chrome.scripting.executeScript({
-        target: { tabId: tabs[0].id},
-        func: (muteMode) => {
-          document.querySelectorAll("video").forEach((v) =>{
-            muteMode ? (v.muted = true) : v.pause();
-          });
-        },
-        args: [mute]
-      });
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      files: ["content/contentScript.js"]
     });
   });
 

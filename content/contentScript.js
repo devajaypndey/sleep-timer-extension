@@ -2,12 +2,18 @@ const videos = document.querySelectorAll("video");
 
 videos.forEach(video => {
   video.pause();
-  video.muted = true;
 });
 
 // overlay
 const overlay = document.createElement("div");
-overlay.innerText = "Time’s up. Take a break 😴";
+overlay.innerHTML = `
+  <div style="text-align:center">
+    <h1 style="margin-bottom:12px">Time is up</h1>
+    <p style="font-size:1.1rem; opacity:0.85">
+      Take a short break before continuing
+    </p>
+  </div>
+`;
 
 Object.assign(overlay.style, {
   position: "fixed",

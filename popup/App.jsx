@@ -20,7 +20,6 @@ import StopIcon from "@mui/icons-material/Stop";
 
 import TimerSlider from "./components/TimerSlider";
 import Presets from "./components/Presets";
-import MuteSwitch from "./components/MuteSwitch";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const theme = createTheme({
@@ -44,7 +43,6 @@ const theme = createTheme({
 
 export default function App() {
   const [minutes, setMinutes] = useState(10);
-  const [mute, setMute] = useState(true);
 
   const [running, setRunning] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(0);
@@ -131,7 +129,7 @@ export default function App() {
             color="text.secondary"
             mb={2}
           >
-            Auto pause or mute videos
+            Auto pause
           </Typography>
 
           <Divider sx={{ mb: 2 }} />
@@ -184,10 +182,6 @@ export default function App() {
             </>
           )}
 
-          {/* ---------- MUTE SWITCH ---------- */}
-          <Box mt={2}>
-            <MuteSwitch mute={mute} setMute={setMute} />
-          </Box>
 
           <Divider sx={{ my: 2 }} />
 
